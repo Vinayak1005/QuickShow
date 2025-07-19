@@ -1,1 +1,9 @@
-node_modules
+# Ignore server and client node_modules
+node_modules/
+
+# Ignore environment files
+.env
+
+# Ignore build or dist folders
+dist/
+build/
