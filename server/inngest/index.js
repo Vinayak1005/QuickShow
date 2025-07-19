@@ -1,10 +1,10 @@
 import { Inngest } from "inngest";
 import User from "../models/User.js";
 
-// Create a client to send and receive events
+// Create Inngest client
 export const inngest = new Inngest({ id: "movie-ticket-booking" });
 
-// Inngest function to save user data to a database
+// User Created
 const syncUserCreation = inngest.createFunction(
   { id: "sync-user-from-clerk" },
   { event: "clerk/user.created" },
@@ -14,28 +14,35 @@ const syncUserCreation = inngest.createFunction(
     const userData = {
       _id: id,
       email: email_addresses[0].email_address,
-      name: first_name + '' + last_name,
+      name: first_name + ' ' + last_name,
       image: image_url,
     };
 
-    await User.create(userData);
-
-    return { status: "User synced successfully", userId: id };
+    try {
+      await User.create(userData);
+      return { status: "User created in MongoDB", userId: id };
+    } catch (err) {
+      if (err.code === 11000) {
+        return { status: "User already exists", userId: id };
+      } else {
+        throw err;
+      }
+    }
   }
 );
 
-// Inngest function to delete user from a database
+// User Deleted
 const syncUserDeletion = inngest.createFunction(
   { id: "delete-user-with-clerk" },
   { event: "clerk/user.deleted" },
   async ({ event }) => {
-    
-    const {id} = event.data
+    const { id } = event.data;
     await User.findByIdAndDelete(id);
+    return { status: "User deleted from MongoDB", userId: id };
   }
 );
 
-// Inngest function to update user data from a database
+// User Updated
 const syncUserUpdation = inngest.createFunction(
   { id: "update-user-with-clerk" },
   { event: "clerk/user.updated" },
@@ -43,12 +50,13 @@ const syncUserUpdation = inngest.createFunction(
     const { id, first_name, last_name, email_addresses, image_url } = event.data;
 
     const userData = {
-      _id: id,
+      name: first_name + ' ' + last_name,
       email: email_addresses[0].email_address,
-      name: first_name + '' + last_name,
       image: image_url,
     };
-    await User.findByIdAndUpdate(id, userData)
+
+    await User.findByIdAndUpdate(id, userData, { new: true });
+    return { status: "User updated in MongoDB", userId: id };
   }
 );
 
