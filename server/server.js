@@ -1,25 +1,46 @@
+import dotenv from 'dotenv';
+dotenv.config(); // Load env vars
+
 import express from 'express';
 import cors from 'cors';
-import 'dotenv/config';
+import { clerkMiddleware } from '@clerk/express';
+import { serve } from 'inngest/express';
 import connectDB from './configs/db.js';
-import { clerkMiddleware } from '@clerk/express'
-import { serve } from "inngest/express";
-import { inngest, functions } from "./inngest/index.js"
+import * as inngestModule from './inngest/index.js';
+import userRoutes from './routes/userRoutes.js'; // ✅ Added this line
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
-await connectDB();
+// Connect to MongoDB
+connectDB();
 
 // Middleware
-app.use(express.json());
 app.use(cors());
-app.use(clerkMiddleware())
+app.use(express.json());
+app.use(clerkMiddleware());
 
+// Health Check
+app.get('/', (req, res) => res.send('✅ API Running'));
 
-// API Routes
-app.get('/', (req, res) => res.send('Server Is Live'));
-app.use('/api/inngest' ,  serve({ client: inngest, functions }));
+// ✅ Mount the /api/user route
+app.use('/api/user', userRoutes);
+
+// Inngest webhook endpoint
+app.use(
+  '/api/inngest',
+  serve({
+    client: inngestModule.inngest,
+    functions: inngestModule.functions,
+  })
+);
+
+// Catch-all 404
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: "Endpoint not found" });
+});
 
 // Start the server
-app.listen(port, () => console.log(`Server is listening at http://localhost:${port}`));
+app.listen(PORT, () =>
+  console.log(`🚀 Server running at http://localhost:${PORT}`)
+);
