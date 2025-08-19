@@ -72,7 +72,7 @@ const SeatLayout = () => {
   );
 
   return (
-    <div className="relative flex-1 flex flex-col items-center max-md:mt-16">
+    <div className="relative flex-1 flex flex-col items-center max-md:mt-16 pt-24">
       <BlurCircle top="-100px" left="-100px" />
       <BlurCircle bottom="0px" right="0px" />
 
