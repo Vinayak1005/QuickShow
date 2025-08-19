@@ -499,63 +499,63 @@ export const dummyLiveShowsData = [
 
 
 export const dummyDateTimeData = {
-  "2025-07-12": [
+  "2025-08-20": [
     { time: "9:00 AM", theatreId: "t1", showId: 1 },
     { time: "1:00 PM", theatreId: "t1", showId: 2 },
     { time: "4:00 PM", theatreId: "t2", showId: 3 },
     { time: "7:00 PM", theatreId: "t2", showId: 4 },
     { time: "9:00 PM", theatreId: "t3", showId: 5 },
   ],
-  "2025-07-13": [
+  "2025-08-21": [
     { time: "9:00 AM", theatreId: "t1", showId: 6 },
     { time: "1:00 PM", theatreId: "t1", showId: 7 },
     { time: "4:00 PM", theatreId: "t2", showId: 8 },
   ],
-  "2025-07-14": [
+  "2025-08-22": [
     { time: "9:00 AM", theatreId: "t1", showId: 11 },
     { time: "1:00 PM", theatreId: "t1", showId: 12 },
     { time: "4:00 PM", theatreId: "t2", showId: 13 },
     { time: "7:00 PM", theatreId: "t2", showId: 14 },
   ],
-  "2025-07-15": [
+  "2025-08-23": [
     { time: "9:00 AM", theatreId: "t1", showId: 16 },
     { time: "1:00 PM", theatreId: "t1", showId: 17 },
     { time: "7:00 PM", theatreId: "t2", showId: 19 },
     { time: "9:00 PM", theatreId: "t3", showId: 20 },
   ],
-  "2025-07-16": [
+  "2025-08-24": [
     { time: "9:00 AM", theatreId: "t1", showId: 16 },
     { time: "1:00 PM", theatreId: "t1", showId: 17 },
   ],
-  "2025-07-17": [
+  "2025-08-25": [
     { time: "9:00 AM", theatreId: "t1", showId: 16 },
     { time: "1:00 PM", theatreId: "t1", showId: 17 },
     { time: "4:00 PM", theatreId: "t2", showId: 18 },
     { time: "7:00 PM", theatreId: "t2", showId: 19 },
     { time: "9:00 PM", theatreId: "t3", showId: 20 },
   ],
-  "2025-07-18": [
+  "2025-08-26": [
     { time: "9:00 AM", theatreId: "t1", showId: 16 },
     { time: "1:00 PM", theatreId: "t1", showId: 17 },
     { time: "4:00 PM", theatreId: "t2", showId: 18 },
     { time: "7:00 PM", theatreId: "t2", showId: 19 },
     { time: "9:00 PM", theatreId: "t3", showId: 20 },
   ],
-  "2025-07-19": [
+  "2025-08-27": [
     { time: "9:00 AM", theatreId: "t1", showId: 16 },
     { time: "1:00 PM", theatreId: "t1", showId: 17 },
     { time: "4:00 PM", theatreId: "t2", showId: 18 },
     { time: "7:00 PM", theatreId: "t2", showId: 19 },
     { time: "9:00 PM", theatreId: "t3", showId: 20 },
   ],
-  "2025-07-20": [
+  "2025-08-28": [
     { time: "9:00 AM", theatreId: "t1", showId: 16 },
     { time: "1:00 PM", theatreId: "t1", showId: 17 },
     { time: "4:00 PM", theatreId: "t2", showId: 18 },
     { time: "7:00 PM", theatreId: "t2", showId: 19 },
     { time: "9:00 PM", theatreId: "t3", showId: 20 },
   ],
-  "2025-07-21": [
+  "2025-08-29": [
     { time: "9:00 AM", theatreId: "t1", showId: 16 },
     { time: "1:00 PM", theatreId: "t1", showId: 17 },
     { time: "4:00 PM", theatreId: "t2", showId: 18 },
